@@ -1,11 +1,11 @@
-import { IoMdAddCircleOutline } from "react-icons/io";
+import { IoMdAddCircleOutline } from 'react-icons/io';
 
-import { useContext, useState } from "react";
-import { newTask } from "../App";
+import { useContext, useState } from 'react';
+import { newTask } from '../App';
 
 export const CreateTask = () => {
-  const [tasks, setTasks] = useContext(newTask);
-  const [content, setContent] = useState("");
+  const { tasks, setTasks } = useContext(newTask);
+  const [content, setContent] = useState('');
 
   function handleCreateNewTask(event) {
     event.preventDefault();
@@ -15,18 +15,18 @@ export const CreateTask = () => {
       { id: tasks.length, content: `${content}`, checked: false },
     ].reverse();
     setTasks(teste);
-    setContent("");
+    setContent('');
   }
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-16 px-2 md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
       <form
         onSubmit={handleCreateNewTask}
         action=""
-        className="flex justify-center mt-[120px]"
+        className="flex justify-between"
       >
         <input
           name="conteudo"
-          className="w-[39.875rem] h-[3.375rem] rounded-[.5rem] p-4 bg-[#262626]"
+          className="w-[71%] md:w-[76%] lg:w-[81%] h-[3.375rem] rounded-[.5rem] p-4 bg-[#262626]"
           type="text"
           placeholder="Adicione uma nova tarefa"
           required
@@ -34,7 +34,7 @@ export const CreateTask = () => {
           value={content}
         />
         <button
-          className="ml-2 p-[1rem] bg-[#696BFE] rounded-[.5rem] font-[.875rem] font-bold"
+          className="w-[25%] md:w-[20%] lg:w-[15%] h-[3.375rem] bg-[#696BFE] rounded-[.5rem] font-[.875rem] font-bold"
           type="submit"
         >
           Criar

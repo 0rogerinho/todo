@@ -1,10 +1,10 @@
-import { Header } from "./Components/Header";
-import { CreateTask } from "./Components/CreateTask";
-import { TaskCount } from "./Components/TaskCount";
-import { TaskList } from "./Components/TaskList";
-import "./App.css";
+import { Header } from './Components/Header';
+import { CreateTask } from './Components/CreateTask';
+import { TaskCount } from './Components/TaskCount';
+import { TaskList } from './Components/TaskList';
+import './App.css';
 
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 export const newTask = createContext();
 
@@ -17,7 +17,7 @@ function App() {
         <Header />
       </div>
       <main>
-        <newTask.Provider value={[tasks, setTasks]}>
+        <newTask.Provider value={{ tasks, setTasks }}>
           <CreateTask />
           <TaskCount />
           <TaskList />

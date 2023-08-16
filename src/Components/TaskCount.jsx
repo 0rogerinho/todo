@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { newTask } from "../App";
+import { useContext, useEffect, useState } from 'react';
+import { newTask } from '../App';
 
 export const TaskCount = () => {
-  const [tasks, setTasks] = useContext(newTask);
+  const { tasks } = useContext(newTask);
   const [completedTasks, setCompletedTasks] = useState(0);
 
   useEffect(() => {
@@ -11,21 +11,24 @@ export const TaskCount = () => {
   }, [tasks]);
 
   return (
-    <div className="mt-[2.5rem] flex justify-center">
-      <section className="w-[46rem] mt-[2.5rem] flex flex-row justify-between">
-        <div className="flex gap-2">
-          <h1 className="font-[.875rem] font-bold text-[#DEC74E]">
+    <div className="px-2 mt-1 flex justify-between md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
+      <section className="w-full mt-[2.5rem] flex flex-row justify-between">
+        <div className="flex flex-col items-center justify-center space-y-1 md:flex-row md:gap-2 md:space-x-0">
+          <h1 className="font-bold inline-block text-[#DEC74E]">
             Tarefas Criadas
           </h1>
-          <span className="pl-2 pr-2 border rounded-[62.4375rem] bg-[#333333]">
+
+          <span className="px-2 border rounded-full bg-[#333333]">
             {tasks.length}
           </span>
         </div>
-        <div className="flex gap-2">
+
+        <div className="flex flex-col items-center justify-center space-y-1 md:flex-row md:gap-2 md:space-y-0">
           <h1 className="font-[.875rem] font-bold text-[#696BFE]">
             Tarefas Concluídas
           </h1>
-          <span className="pl-2 pr-2 border rounded-[62.4375rem] bg-[#333333]">
+
+          <span className="px-2 border rounded-full bg-[#333333]">
             {completedTasks} de {tasks.length}
           </span>
         </div>
