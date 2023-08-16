@@ -1,7 +1,6 @@
 import { Task } from './Task';
 import { useContext, useEffect } from 'react';
 import { newTask } from '../App';
-import prancheta from '../Components/assets/prancheta.svg';
 
 export function TaskList() {
   const { tasks, setTasks } = useContext(newTask);
@@ -19,7 +18,7 @@ export function TaskList() {
   }
 
   useEffect(() => {
-    if (tasks.length > 0) {
+    if (tasks.length >= 0) {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }, [tasks]);
@@ -28,13 +27,11 @@ export function TaskList() {
     <div className="flex justify-center 2xl:mt-5 px-2 md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
       <section className="w-full mt-6 py-4 px-2 border-t rounded-[.5rem] border-[#333333]">
         <div
-          className={`mt-[5.5rem] flex flex-col justify-center items-center ${
+          className={`mt-12 flex flex-col justify-center items-center ${
             tasks.length === 0 ? 'block' : 'hidden'
           }`}
         >
-          <div>
-            <img src={prancheta} alt="" />
-          </div>
+          <img src="prancheta.svg" />
           <p className="mt-[1rem] text-[#808080] font-bold">
             Você ainda não tem tarefas cadastradas
           </p>
