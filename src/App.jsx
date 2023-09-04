@@ -1,28 +1,18 @@
-import { Header } from './Components/Header';
-import { CreateTask } from './Components/CreateTask';
-import { TaskCount } from './Components/TaskCount';
-import { TaskList } from './Components/TaskList';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Todo from './Components/pages/todo/Todo';
 import './App.css';
-
-import { createContext, useState } from 'react';
-
-export const newTask = createContext();
+import LoginPage from './Components/pages/loginPages/LoginPage';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <main>
-        <newTask.Provider value={{ tasks, setTasks }}>
-          <CreateTask />
-          <TaskCount />
-          <TaskList />
-        </newTask.Provider>
-      </main>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login/*" element={<LoginPage />} />
+          <Route path="/home" element={<Todo />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { newTask } from '../App';
+import { TaskContext } from './hooks/userIdContext';
 
 export const TaskCount = () => {
-  const { tasks } = useContext(newTask);
+  const { tasks } = useContext(TaskContext);
   const [completedTasks, setCompletedTasks] = useState(0);
 
   useEffect(() => {
-    const completedCount = tasks.filter((task) => task.checked).length;
+    const completedCount = tasks.filter((task) => task.state).length;
     setCompletedTasks(completedCount);
   }, [tasks]);
 
@@ -15,7 +15,7 @@ export const TaskCount = () => {
       <section className="w-full mt-[2.5rem] flex flex-row justify-between">
         <div className="flex flex-col items-center justify-center space-y-1 md:flex-row md:gap-2 md:space-x-0">
           <h1 className="font-bold inline-block text-[#DEC74E]">
-            Tarefas Criadas
+            task created
           </h1>
 
           <span className="px-2 border rounded-full bg-[#333333]">
@@ -25,11 +25,11 @@ export const TaskCount = () => {
 
         <div className="flex flex-col items-center justify-center space-y-1 md:flex-row md:gap-2 md:space-y-0">
           <h1 className="font-[.875rem] font-bold text-[#696BFE]">
-            Tarefas Concluídas
+            task completed
           </h1>
 
           <span className="px-2 border rounded-full bg-[#333333]">
-            {completedTasks} de {tasks.length}
+            {completedTasks} of {tasks.length}
           </span>
         </div>
       </section>

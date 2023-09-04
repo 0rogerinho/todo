@@ -1,27 +1,9 @@
+import { useContext } from 'react';
 import { Task } from './Task';
-import { useContext, useEffect } from 'react';
-import { newTask } from '../App';
+import { TaskContext } from './hooks/userIdContext';
 
 export function TaskList() {
-  const { tasks, setTasks } = useContext(newTask);
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-  }, []);
-
-  function deleteTask(id) {
-    const remainingTasks = tasks.filter((task) => task.id !== id);
-    setTasks(remainingTasks);
-  }
-
-  useEffect(() => {
-    if (tasks.length >= 0) {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-  }, [tasks]);
+  const { tasks } = useContext(TaskContext);
 
   return (
     <div className="flex justify-center 2xl:mt-5 px-2 md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
@@ -39,14 +21,8 @@ export function TaskList() {
             Crie tarefas e organize seus itens a fazer
           </p>
         </div>
-        {tasks.map((item) => (
-          <Task
-            key={item.id}
-            id={item.id}
-            content={item.content}
-            deleteTask={deleteTask}
-            checked={item.checked}
-          />
+        {tasks.map(({ _id, title, state }) => (
+          <Task key={_id} id={_id} content={title} checked={state} />
         ))}
       </section>
     </div>

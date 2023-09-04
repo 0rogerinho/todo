@@ -1,34 +1,40 @@
-import { useContext, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { TbTrash } from 'react-icons/tb';
 import { BsCheck } from 'react-icons/bs';
-import { newTask } from '../App';
+import { useState } from 'react';
+import PatchTask from './actions/patchTask';
+import DeletedTask from './actions/deleteTask';
 
-export const Task = ({ content, id, deleteTask, checked }) => {
+export const Task = ({ content, id, checked }) => {
+  const { stateTask } = PatchTask();
+  const { removeTask } = DeletedTask();
   const [isChecked, setIsChecked] = useState(checked); // Inicializa com o valor de `checked` das props
-  const { setTasks } = useContext(newTask);
 
   function handleCheckedTask(event) {
-    setIsChecked(event.target.checked);
-    setTasks((oldTasks) =>
-      oldTasks.map((task) =>
-        task.id === id ? { ...task, checked: !task.checked } : task,
-      ),
-    );
+    event.preventDefault();
+
+    stateTask(id, !isChecked);
+
+    setIsChecked(!isChecked);
   }
 
-  function handleDeleteTask() {
-    deleteTask(id);
+  function handleDeleteTask(event) {
+    event.preventDefault();
+
+    removeTask(id);
   }
 
   return (
     <div className="mb-[.75rem] px-3 w-full bg-[#262626] rounded-lg border-[#333333] min-h-[4.5rem] flex flex-row justify-between items-center gap-1 ">
       <div>
         <input
-          onChange={handleCheckedTask}
+          onClick={handleCheckedTask}
           className="hidden mr-2"
           id={id}
           type="checkbox"
-          checked={isChecked} // Define o valor do checkbox com base no estado `isChecked`
+          defaultChecked={isChecked} // Define o valor do checkbox com base no estado `isChecked`
         />
         <label
           htmlFor={id}
