@@ -1,14 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { TaskContext } from './hooks/userIdContext';
 
 export const TaskCount = () => {
   const { tasks } = useContext(TaskContext);
-  const [completedTasks, setCompletedTasks] = useState(0);
 
-  useEffect(() => {
-    const completedCount = tasks.filter((task) => task.state).length;
-    setCompletedTasks(completedCount);
-  }, [tasks]);
+  const completedCount = tasks.filter((task) => task.state === true).length;
 
   return (
     <div className="px-2 mt-1 flex justify-between md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
@@ -29,7 +25,7 @@ export const TaskCount = () => {
           </h1>
 
           <span className="px-2 border rounded-full bg-[#333333]">
-            {completedTasks} of {tasks.length}
+            {completedCount} of {tasks.length}
           </span>
         </div>
       </section>

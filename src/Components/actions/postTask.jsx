@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { TaskContext } from '../hooks/userIdContext';
 
 const PostTask = () => {
-  const { tasks, setTask } = useContext(TaskContext);
+  const { tasks, setTasks } = useContext(TaskContext);
 
   const userId = JSON.parse(localStorage.getItem('user_id'));
 
@@ -16,7 +16,8 @@ const PostTask = () => {
       },
     );
     const json = await response.json();
-    setTask(...tasks, json);
+    const newTask = [...tasks, json];
+    setTasks(newTask);
   }
 
   return { newTask };

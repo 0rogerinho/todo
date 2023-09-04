@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
 
-export const TaskContext = createContext('test');
+export const TaskContext = createContext('');
 
 const ContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);

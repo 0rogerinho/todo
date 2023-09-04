@@ -3,17 +3,35 @@
 /* eslint-disable react/prop-types */
 import { TbTrash } from 'react-icons/tb';
 import { BsCheck } from 'react-icons/bs';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PatchTask from './actions/patchTask';
 import DeletedTask from './actions/deleteTask';
+import { TaskContext } from './hooks/userIdContext';
 
 export const Task = ({ content, id, checked }) => {
+  const { tasks, setTasks } = useContext(TaskContext);
+
+  const allTask = tasks;
+
   const { stateTask } = PatchTask();
+
   const { removeTask } = DeletedTask();
+
   const [isChecked, setIsChecked] = useState(checked); // Inicializa com o valor de `checked` das props
 
   function handleCheckedTask(event) {
     event.preventDefault();
+
+    const updateTask = allTask.filter((task) => {
+      if (task._id === id) {
+        console.log(task._id);
+        task.state = !isChecked;
+      }
+      return task;
+    });
+
+    console.log(updateTask);
+    setTasks(updateTask);
 
     stateTask(id, !isChecked);
 
@@ -22,6 +40,10 @@ export const Task = ({ content, id, checked }) => {
 
   function handleDeleteTask(event) {
     event.preventDefault();
+
+    const deleteTask = allTask.filter((task) => task._id !== id);
+
+    setTasks(deleteTask);
 
     removeTask(id);
   }
