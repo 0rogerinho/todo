@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const GetLogin = () => {
+const GetLogin = () => {
   const [user, setUser] = useState(null);
 
   async function login(email, password) {
@@ -24,3 +24,5 @@ export const GetLogin = () => {
 
   return { user, login };
 };
+
+export default GetLogin;

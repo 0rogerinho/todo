@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { GetLogin } from './actions/GetLogin';
+import GetLogin from './actions/getLogin';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
