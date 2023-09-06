@@ -20,10 +20,10 @@ Este projeto consiste em um aplicativo web para gerenciar tarefas de forma efici
 **Luan/DevRogerinho:** Designer UX/UI
 **Luan/DevRogerinho:** Gerente de Projeto
 
-##Status do Projeto
+## Status do Projeto
 O projeto encontra-se concluído
 
-##Contato
+## Contato
 luansilvapmp@gmail.com
 
 https://www.linkedin.com/in/luansilva-devrogerinho
