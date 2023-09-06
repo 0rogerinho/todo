@@ -9,7 +9,7 @@ export function TaskList() {
     <div className="flex justify-center 2xl:mt-5 px-2 md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
       <section className="w-full mt-6 py-4 px-2 border-t rounded-[.5rem] border-[#333333]">
         <div
-          className={`mt-12 flex flex-col justify-center items-center ${
+          className={`mt-12 flex text-center flex-col justify-center items-center ${
             tasks.length === 0 ? 'block' : 'hidden'
           }`}
         >

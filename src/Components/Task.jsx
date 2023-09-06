@@ -25,7 +25,7 @@ export const Task = ({ content, id, checked }) => {
     const updateTask = allTask.filter((task) => {
       if (task._id === id) {
         console.log(task._id);
-        task.state = !isChecked;
+        task.state = !isChecked;  
       }
       return task;
     });

@@ -7,12 +7,14 @@ import PostTask from './actions/postTask';
 export const CreateTask = () => {
   const [title, setTitle] = useState('');
 
-  const { task, newTask } = PostTask();
+  const { newTask } = PostTask();
 
   function handleCreateNewTask(event) {
     event.preventDefault();
 
     newTask(title);
+
+    setTitle('');
   }
 
   return (
