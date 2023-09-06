@@ -12,12 +12,16 @@ Este projeto consiste em um aplicativo web para gerenciar tarefas de forma efici
 
 ## Tecnologias Utilizadas
 **Frontend:** HTML, CSS, JavaScript, React
+
 **Backend:** Node.js, Express.js
+
 **Banco de Dados:** MongoDB
 
 ## Desenvolvimento
 **Luan/DevRogerinho:** Desenvolvedor Full Stack
+
 **Luan/DevRogerinho:** Designer UX/UI
+
 **Luan/DevRogerinho:** Gerente de Projeto
 
 ## Status do Projeto
