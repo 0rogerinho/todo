@@ -15,7 +15,7 @@ Este projeto consiste em um aplicativo web para gerenciar tarefas de forma efici
 
 **Backend:** Node.js, Express.js
 
-**Banco de Dados:** MongoDB
+**Banco de Dados:** MongoDB Atlas
 
 ## Desenvolvimento
 **Luan/DevRogerinho:** Desenvolvedor Full Stack
