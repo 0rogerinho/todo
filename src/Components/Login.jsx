@@ -20,8 +20,9 @@ const Login = () => {
   }
 
   useEffect(() => {
-    console.log(user);
-    if (user && user['_id']) navigate('/home');
+    const userId = JSON.parse(localStorage.getItem('user_id'));
+
+    if (user || userId) navigate('/home');
   }, [user]);
 
   return (
