@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import GetLogin from './actions/GetLogin';
+import GetLogin from './actions/getLogin';
 
 const Login = () => {
   const [email, setEmail] = useState('');
