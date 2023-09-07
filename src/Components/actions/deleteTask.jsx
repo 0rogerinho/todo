@@ -3,7 +3,7 @@ const DeleteTask = () => {
 
   async function removeTask(id) {
     const response = await fetch(
-      `https://puzzled-bull-gown.cyclic.cloud/user/task/${userId}`,
+      `https://puzzled-bull-gown.cyclic.cloud/user/task/${userId._id}`,
       {
         method: 'DELETE',
         headers: {

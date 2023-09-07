@@ -14,7 +14,7 @@ const GetTask = () => {
   useEffect(() => {
     async function allTasks() {
       const response = await fetch(
-        `https://puzzled-bull-gown.cyclic.cloud/user/task?id=${userId}`,
+        `https://puzzled-bull-gown.cyclic.cloud/user/task?id=${userId._id}`,
         {
           method: 'GET',
           headers: {
@@ -29,8 +29,6 @@ const GetTask = () => {
     }
     allTasks();
   }, [task]);
-
-  return;
 };
 
 export default GetTask;

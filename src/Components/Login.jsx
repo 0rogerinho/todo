@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import GetLogin from './actions/getLogin';
 import { Link, useNavigate } from 'react-router-dom';
+import GetLogin from './actions/GetLogin';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const userId = JSON.parse(localStorage.getItem('user_id'));
   const navigate = useNavigate();
 
   const { login, user } = GetLogin();
@@ -15,14 +16,13 @@ const Login = () => {
 
     console.log(email);
     console.log(password);
+    console.log(user);
 
     login(email, password);
   }
 
   useEffect(() => {
-    const userId = JSON.parse(localStorage.getItem('user_id'));
-
-    if (user || userId) navigate('/home');
+    if ((user && user['_id']) || userId) navigate('/home');
   }, [user]);
 
   return (
@@ -63,7 +63,7 @@ const Login = () => {
           placeholder="password"
           onChange={({ target }) => setPassword(target.value)}
         />
-        {user === 'invalid password' && (
+        {userId === 'invalid password' && (
           <span className="text-red-400 absolute top-[90px] ">
             invalid password
           </span>
