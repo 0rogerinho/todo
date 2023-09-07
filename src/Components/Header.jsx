@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import img from './assets/logoTodo.svg';
+
 export const Header = () => {
+  const navigate = useNavigate();
   function handleClick(event) {
     event.preventDefault();
 
     localStorage.removeItem('user_id');
-    window.location.reload();
+    navigate('/login');
   }
 
   return (
