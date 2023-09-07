@@ -11,6 +11,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login/*" element={<LoginPage />} />
           <Route path="/home" element={<Todo />} />
+          <Route path="*" element={<Todo />} />
         </Routes>
       </BrowserRouter>
     </>
