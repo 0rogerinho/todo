@@ -22,7 +22,8 @@ const Login = () => {
   }
 
   useEffect(() => {
-    if ((user && user['_id']) || userId) navigate('/home');
+    if (user && user['_id']) navigate('/home');
+    if (userId) navigate('/home');
   }, [user]);
 
   return (
@@ -63,7 +64,7 @@ const Login = () => {
           placeholder="password"
           onChange={({ target }) => setPassword(target.value)}
         />
-        {userId === 'invalid password' && (
+        {user === 'invalid password' && (
           <span className="text-red-400 absolute top-[90px] ">
             invalid password
           </span>

@@ -17,7 +17,9 @@ const GetLogin = () => {
 
     const json = await response.json();
 
-    localStorage.setItem('user_id', JSON.stringify(json));
+    if (json !== 'user not found' && json !== 'invalid password') {
+      localStorage.setItem('user_id', JSON.stringify(json));
+    }
 
     setUser(json);
   }
