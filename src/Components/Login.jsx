@@ -40,7 +40,7 @@ const Login = () => {
           id="email"
           className="min-w-[500px] min-h-[55px] px-2 outline-none rounded-md"
           type="email"
-          placeholder="username"
+          placeholder="email"
           onChange={({ target }) => setEmail(target.value)}
         />
         {user === 'user not found' && (
