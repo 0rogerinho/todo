@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useContext } from 'react';
 import { Task } from './Task';
 import { TaskContext } from './hooks/userIdContext';
@@ -15,10 +16,10 @@ export function TaskList() {
         >
           <img src="prancheta.svg" />
           <p className="mt-[1rem] text-[#808080] font-bold">
-            Você ainda não tem tarefas cadastradas
+            You don't have tasks registered yet
           </p>
           <p className="text-[#808080]">
-            Crie tarefas e organize seus itens a fazer
+            Create tasks and organize your to-do items
           </p>
         </div>
         {tasks.map(({ _id, title, state }) => (

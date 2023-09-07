@@ -1,24 +1,33 @@
-/* eslint-disable no-unused-vars */
 import { IoMdAddCircleOutline } from 'react-icons/io';
-
 import { useState } from 'react';
 import PostTask from './actions/postTask';
 
 export const CreateTask = () => {
   const [title, setTitle] = useState('');
+  const [isInputInvalid, setIsInputInvalid] = useState(false);
 
   const { newTask } = PostTask();
 
   function handleCreateNewTask(event) {
     event.preventDefault();
 
-    newTask(title);
+    const trimmedTitle = title.trim();
 
+    if (trimmedTitle === '') {
+      // Define o input como inválido
+      setIsInputInvalid(true);
+      return;
+    }
+
+    // Define o input como válido
+    setIsInputInvalid(false);
+
+    newTask(trimmedTitle);
     setTitle('');
   }
 
   return (
-    <div className="flex flex-col mt-16 px-2 md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
+    <div className="relative flex flex-col mt-16 px-2 md:px-[20%] 2xl:px-[25%] 2xl:scale-125">
       <form
         onSubmit={handleCreateNewTask}
         action=""
@@ -33,6 +42,13 @@ export const CreateTask = () => {
           placeholder="add new task"
           onChange={({ target }) => setTitle(target.value)}
         />
+        <span
+          className={`absolute text-red-500  bottom-16 ${
+            isInputInvalid ? 'opacity-100' : 'hidden'
+          } transition-all duration-500`}
+        >
+          Fill in this field
+        </span>
         <button
           className="w-[25%] md:w-[20%] lg:w-[15%] h-[3.375rem] bg-[#696BFE] rounded-[.5rem] font-[.875rem] font-bold"
           type="submit"
