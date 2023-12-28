@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // React-router-dom
 import { Link, useNavigate } from 'react-router-dom';
 // Actions
-import PostUser from '../actions/postUser';
+import PostUser from '../actions/PostUser';
 // React icons
 import { LuLoader2 } from 'react-icons/lu';
 
