@@ -1,6 +1,9 @@
-import { IoMdAddCircleOutline } from 'react-icons/io';
+// React
 import { useState } from 'react';
-import PostTask from './actions/postTask';
+// Actions
+import PostTask from '../actions/PostTask';
+// React icons
+import { IoMdAddCircleOutline } from 'react-icons/io';
 
 export const CreateTask = () => {
   const [title, setTitle] = useState('');

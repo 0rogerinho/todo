@@ -1,23 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// React
 import { useEffect, useState } from 'react';
+// React-router-dom
 import { Link, useNavigate } from 'react-router-dom';
-import GetLogin from './actions/getLogin';
+// Actions
+import GetLogin from '../actions/GetLogin';
+// React icons
+import { LuLoader2 } from 'react-icons/lu';
 
-const Login = () => {
+export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const userId = JSON.parse(localStorage.getItem('user_id'));
   const navigate = useNavigate();
 
-  const { login, user } = GetLogin();
+  const { login, user, load } = GetLogin();
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    console.log(email);
-    console.log(password);
-    console.log(user);
-
     login(email, password);
   }
 
@@ -29,20 +29,20 @@ const Login = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="min-h-screen flex flex-col justify-center items-center gap-8"
+      className="max-w-[400px] flex flex-col items-center justify-center min-h-screen gap-8 m-auto"
     >
       <img src="/login.svg" alt="login" />
-      <div className="flex flex-col gap-2 relative">
-        <label className="text-xl font-semibold " htmlFor="email">
+      <div className="relative flex flex-col w-full gap-1">
+        <label className="text-xl font-semibold" htmlFor="email">
           Email
         </label>
         <input
           required
           value={email}
           id="email"
-          className="min-w-[500px] min-h-[55px] px-2 outline-none rounded-md"
+          className="w-full px-2 py-4 rounded-md outline-none"
           type="email"
-          placeholder="email"
+          placeholder="Email"
           onChange={({ target }) => setEmail(target.value)}
         />
         {user === 'user not found' && (
@@ -51,7 +51,7 @@ const Login = () => {
           </span>
         )}
       </div>
-      <div className="flex flex-col gap-2 relative">
+      <div className="relative flex flex-col w-full gap-1">
         <label className="text-xl font-semibold " htmlFor="password">
           password
         </label>
@@ -59,9 +59,9 @@ const Login = () => {
           required
           value={password}
           id="password"
-          className="min-w-[500px] min-h-[55px] px-2 outline-none rounded-md"
+          className="w-full px-2 py-4 rounded-md outline-none"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           onChange={({ target }) => setPassword(target.value)}
         />
         {user === 'invalid password' && (
@@ -70,14 +70,18 @@ const Login = () => {
           </span>
         )}
       </div>
-      <Link to="/login/create">
-        <p className="text-lg underline text-[#DEC74E] font-semibold">
+      <Link className="w-full" to="/login/create">
+        <p className="text-end w-full text-lg underline text-[#DEC74E] font-semibold">
           Sign up
         </p>
       </Link>
-      <button className="min-w-[200px] bg-[#459] py-4 rounded-md">Send</button>
+      <button className="w-full bg-[#459] h-[56px] rounded-md font-bold">
+        {load ? (
+          <LuLoader2 className="m-auto animate-spin" size={20} />
+        ) : (
+          'Send'
+        )}
+      </button>
     </form>
   );
 };
-
-export default Login;

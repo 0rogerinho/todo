@@ -1,5 +1,7 @@
+// React-router-dom
 import { useNavigate } from 'react-router-dom';
-import img from './assets/logoTodo.svg';
+// Assets
+import img from '../assets/logoTodo.svg';
 
 export const Header = () => {
   const navigate = useNavigate();

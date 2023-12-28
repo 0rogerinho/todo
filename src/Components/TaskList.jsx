@@ -1,7 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
+// React
 import { useContext } from 'react';
+// Task
 import { Task } from './Task';
-import { TaskContext } from './hooks/userIdContext';
+// Context
+import { TaskContext } from '../context';
 
 export function TaskList() {
   const { tasks } = useContext(TaskContext);

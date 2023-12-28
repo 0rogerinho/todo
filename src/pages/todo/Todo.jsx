@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// React
 import { useEffect } from 'react';
-import { CreateTask } from '../../CreateTask';
-import { Header } from '../../Header';
-import { TaskCount } from '../../TaskCount';
-import { TaskList } from '../../TaskList';
-import ContextProvider from '../../hooks/userIdContext';
+// React-router-dom
 import { useNavigate } from 'react-router-dom';
-import GetTask from '../../actions/getTask';
+// Context
+import { ContextProvider } from '../../context';
+// Actions
+import GetTask from '../../actions/GetTask';
+// Components
+import { CreateTask, Header, TaskCount, TaskList } from '../../Components';
 
-function Todo() {
+export const Todo = () => {
   const navigate = useNavigate();
   const userConnected = JSON.parse(localStorage.getItem('user_id'));
 
@@ -29,5 +31,4 @@ function Todo() {
       <TaskList />
     </ContextProvider>
   );
-}
-export default Todo;
+};

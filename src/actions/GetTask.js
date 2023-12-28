@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react';
-import PostTask from './postTask';
-import { TaskContext } from '../hooks/userIdContext';
+import PostTask from './PostTask';
+import { TaskContext } from '../context';
 
 const GetTask = () => {
   const { tasks, setTasks } = useContext(TaskContext);

@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+// React
 import { createContext, useState } from 'react';
 
 export const TaskContext = createContext('');
 
-const ContextProvider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
   return (
@@ -12,5 +13,3 @@ const ContextProvider = ({ children }) => {
     </TaskContext.Provider>
   );
 };
-
-export default ContextProvider;

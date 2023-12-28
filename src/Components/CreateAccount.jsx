@@ -1,24 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// React
 import { useEffect, useState } from 'react';
+// React-router-dom
 import { Link, useNavigate } from 'react-router-dom';
-import PostUser from './actions/postUser';
+// Actions
+import PostUser from '../actions/postUser';
+// React icons
+import { LuLoader2 } from 'react-icons/lu';
 
-const CreateAccount = () => {
+export const CreateAccount = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
 
-  const { account, newUser } = PostUser();
+  const { account, newUser, load } = PostUser();
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    console.log(username);
-    console.log(email);
-    console.log(password);
-
     account(username, email, password);
   }
 
@@ -30,11 +30,11 @@ const CreateAccount = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="min-h-screen flex flex-col justify-center items-center gap-8"
+      className="max-w-[400px] flex flex-col items-center justify-center min-h-screen gap-8 m-auto"
       action=""
     >
       <img src="/signUp.svg" alt="signUp" />
-      <div className="flex flex-col gap-2 relative">
+      <div className="relative flex flex-col w-full gap-1">
         <label className="text-xl font-semibold " htmlFor="email">
           Username
         </label>
@@ -42,13 +42,13 @@ const CreateAccount = () => {
           required
           value={username}
           id="username"
-          className="min-w-[500px] px-2  py-4 outline-none rounded-md"
+          className="w-full px-2 py-4 rounded-md outline-none"
           type="text"
-          placeholder="username"
+          placeholder="Username"
           onChange={({ target }) => setUsername(target.value)}
         />
       </div>
-      <div className="flex flex-col gap-1 relative">
+      <div className="relative flex flex-col w-full gap-1">
         <label className="text-xl font-semibold" htmlFor="email">
           Email
         </label>
@@ -56,9 +56,9 @@ const CreateAccount = () => {
           required
           value={email}
           id="email"
-          className="min-w-[500px] px-2  py-4 outline-none rounded-md"
+          className="w-full px-2 py-4 rounded-md outline-none"
           type="email"
-          placeholder="email"
+          placeholder="Email"
           onChange={({ target }) => setEmail(target.value)}
         />
         {newUser === 'Existing user' && (
@@ -67,7 +67,7 @@ const CreateAccount = () => {
           </span>
         )}
       </div>
-      <div className="flex flex-col gap-2 relative">
+      <div className="relative flex flex-col w-full gap-1">
         <label className="text-xl font-semibold" htmlFor="password">
           password
         </label>
@@ -75,18 +75,24 @@ const CreateAccount = () => {
           required
           value={password}
           id="password"
-          className="min-w-[500px] px-2  py-4 outline-none rounded-md"
+          className="w-full px-2 py-4 rounded-md outline-none"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <Link to="/login">
-        <p className="text-lg underline text-[#DEC74E] font-semibold">Login</p>
+      <Link className="w-full" to="/login">
+        <p className="text-end text-lg underline text-[#DEC74E] font-semibold">
+          Login
+        </p>
       </Link>
-      <button className="min-w-[200px] bg-[#459] py-4 rounded-md">Send</button>
+      <button className="w-full bg-[#459] py-4 rounded-md font-bold">
+        {load ? (
+          <LuLoader2 className="m-auto animate-spin" size={20} />
+        ) : (
+          'Send'
+        )}
+      </button>
     </form>
   );
 };
-
-export default CreateAccount;
